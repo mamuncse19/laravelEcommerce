@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.index');
 });
 
 /*
@@ -27,6 +27,11 @@ Route::prefix('admin')->group(function() {
    Route::get('/', 'Auth\AdminController@index')->name('admin.dashboard');
   }) ;
 
+/*
+=============
+Users Routes
+=============
+*/
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
