@@ -12,6 +12,11 @@
     <link href="{{asset('admin_css_js/lib/Ionicons/css/ionicons.css')}}" rel="stylesheet">
     <link href="{{asset('admin_css_js/lib/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet">
     <link href="{{asset('admin_css_js/lib/rickshaw/rickshaw.min.css')}}" rel="stylesheet">
+    <link href="{{asset('admin_css_js/lib/highlightjs/github.css')}}" rel="stylesheet">
+    <link href="{{asset('admin_css_js/lib/datatables/jquery.dataTables.css')}}" rel="stylesheet">
+    <link href="{{asset('admin_css_js/lib/select2/css/select2.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css">
 
     <!-- Starlight CSS -->
     <link rel="stylesheet" href="{{asset('admin_css_js/css/starlight.css')}}">
@@ -38,7 +43,7 @@
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="chart-morris.html" class="nav-link">Category</a></li>
+          <li class="nav-item"><a href="{{route('categories')}}" class="nav-link">Category</a></li>
           <li class="nav-item"><a href="chart-flot.html" class="nav-link">Sub Category</a></li>
           <li class="nav-item"><a href="chart-chartjs.html" class="nav-link">Brand</a></li>
         </ul>
@@ -141,9 +146,6 @@
               <ul class="list-unstyled user-profile-nav">
                 <li><a href=""><i class="icon ion-ios-person-outline"></i> Edit Profile</a></li>
                 <li><a href=""><i class="icon ion-ios-gear-outline"></i> Settings</a></li>
-                <li><a href=""><i class="icon ion-ios-download-outline"></i> Downloads</a></li>
-                <li><a href=""><i class="icon ion-ios-star-outline"></i> Favorites</a></li>
-                <li><a href=""><i class="icon ion-ios-folder-outline"></i> Collections</a></li>
                 <li><a href="{{route('admin.logout')}}"><i class="icon ion-power"></i> Sign Out</a></li>
               </ul>
             </div><!-- dropdown-menu -->
@@ -243,22 +245,103 @@
     </div><!-- sl-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
 
-    <script src="admin_css_js/lib/jquery/jquery.js"></script>
-    <script src="admin_css_js/lib/popper.js/popper.js"></script>
-    <script src="admin_css_js/lib/bootstrap/bootstrap.js"></script>
-    <script src="admin_css_js/lib/jquery-ui/jquery-ui.js"></script>
-    <script src="admin_css_js/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
-    <script src="admin_css_js/lib/jquery.sparkline.bower/jquery.sparkline.min.js"></script>
-    <script src="admin_css_js/lib/d3/d3.js"></script>
-    <script src="admin_css_js/lib/rickshaw/rickshaw.min.js"></script>
-    <script src="admin_css_js/lib/chart.js/Chart.js"></script>
-    <script src="admin_css_js/lib/Flot/jquery.flot.js"></script>
-    <script src="admin_css_js/lib/Flot/jquery.flot.pie.js"></script>
-    <script src="admin_css_js/lib/Flot/jquery.flot.resize.js"></script>
-    <script src="admin_css_js/lib/flot-spline/jquery.flot.spline.js"></script>
 
-    <script src="admin_css_js/js/starlight.js"></script>
-    <script src="admin_css_js/js/ResizeSensor.js"></script>
-    <script src="admin_css_js/js/dashboard.js"></script>
+    <script src="{{asset('admin_css_js/lib/jquery/jquery.js')}}"></script>
+    <script src="{{asset('admin_css_js/lib/popper.js/popper.js')}}"></script>
+    <script src="{{asset('admin_css_js/lib/bootstrap/bootstrap.js')}}"></script>
+    <script src="{{asset('admin_css_js/lib/jquery-ui/jquery-ui.js')}}"></script>
+    <script src="{{asset('admin_css_js/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js')}}"></script>
+    <script src="{{asset('admin_css_js/lib/highlightjs/highlight.pack.js')}}"></script>
+    <script src="{{asset('admin_css_js/lib/datatables/jquery.dataTables.js')}}"></script>
+    <script src="{{asset('admin_css_js/lib/datatables-responsive/dataTables.responsive.js')}}"></script>
+    <script src="{{asset('admin_css_js/lib/select2/js/select2.min.js')}}"></script>
+    <script src="{{asset('admin_css_js/lib/jquery.sparkline.bower/jquery.sparkline.min.js')}}"></script>
+    <script src="{{asset('admin_css_js/lib/d3/d3.js')}}"></script>
+    <script src="{{asset('admin_css_js/lib/rickshaw/rickshaw.min.js')}}"></script>
+    <script src="{{asset('admin_css_js/lib/chart.js/Chart.js')}}"></script>
+    <script src="{{asset('admin_css_js/lib/Flot/jquery.flot.js')}}"></script>
+    <script src="{{asset('admin_css_js/lib/Flot/jquery.flot.pie.js')}}"></script>
+    <script src="{{asset('admin_css_js/lib/Flot/jquery.flot.resize.js')}}"></script>
+    <script src="{{asset('admin_css_js/lib/flot-spline/jquery.flot.spline.js')}}"></script>
+    <script src="{{asset('admin_css_js/js/starlight.js')}}"></script>
+        <script>
+      $(function(){
+        'use strict';
+
+        $('#datatable1').DataTable({
+          responsive: true,
+          language: {
+            searchPlaceholder: 'Search...',
+            sSearch: '',
+            lengthMenu: '_MENU_ items/page',
+          }
+        });
+
+        // Select2
+        $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+
+      });
+    </script>
+    <script src="{{asset('admin_css_js/js/ResizeSensor.js')}}"></script>
+    <script src="{{asset('admin_css_js/js/dashboard.js')}}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.js"></script>
+    <script>
+     @if(Session::has('message'))
+    var type = "{{ Session::get('alert-type','info') }}"
+    switch(type){
+        case 'info':
+        toastr.info("{{ Session::get('message') }}");
+        break;
+         case 'success':
+        toastr.success("{{ Session::get('message') }}");
+        break;
+        case 'warning':
+        toastr.warning("{{ Session::get('message') }}");
+        break;
+        case 'error':
+        toastr.error("{{ Session::get('message') }}");
+        break;
+    }
+    @endif
+
+    $(document).on("click", "#delete", function(e){
+      e.preventDefault();
+      var link = $(this).attr('href');
+      const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success',
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false
+})
+
+swalWithBootstrapButtons.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, delete it!',
+  cancelButtonText: 'No, cancel!',
+  reverseButtons: true
+}).then((result) => {
+  if (result.value) {
+    window.location.href=link;
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire(
+      'Cancelled',
+      'Your imaginary file is safe :)',
+      'error'
+    )
+  }
+})
+    });
+  
+</script>
+   
   </body>
 </html>

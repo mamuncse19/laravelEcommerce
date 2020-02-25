@@ -20,6 +20,16 @@ Route::get('/', function () {
 Admin Routes
 =============
 */
+
+//Category Route
+
+Route::get('admin/category','Admin\Category\CategoryController@category')->name('categories');
+Route::post('admin/category/insert','Admin\Category\CategoryController@categoryInsert')->name('category.insert');
+Route::get('category/delete/{id}','Admin\Category\CategoryController@delete');
+Route::get('category/edit/{id}','Admin\Category\CategoryController@edit');
+Route::post('category/update/{id}','Admin\Category\CategoryController@update');
+
+//Login Route
 Route::prefix('admin')->group(function() {
    Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
