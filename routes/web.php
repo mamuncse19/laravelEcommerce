@@ -29,6 +29,9 @@ Route::get('category/delete/{id}','Admin\Category\CategoryController@delete');
 Route::get('category/edit/{id}','Admin\Category\CategoryController@edit');
 Route::post('category/update/{id}','Admin\Category\CategoryController@update');
 
+//Brand Route
+Route::get('admin/brand','Admin\Brand\BrandController@brnad')->name('brands');
+Route::post('admin/brand/insert','Admin\Brand\BrandController@brandInsert')->name('brand.insert');
 //Login Route
 Route::prefix('admin')->group(function() {
    Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
