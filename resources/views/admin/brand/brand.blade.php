@@ -37,10 +37,10 @@ Category
                 <tr>
                   <td>{{$row->id}}</td>
                   <td>{{$row->brand_name}}</td>
-                  <td><img src="{{url($row->brand_logo)}}" style="height: 100px;width: 100px;"></td>
+                  <td><img src="{{url($row->brand_logo)}}" style="height: 70px;width: 80px;"></td>
                   <td>
-                  	<a href="{{URL::to('category/edit/'.$row->id)}}" class="btn btn-sm btn-info">Edit</a>
-                  	<a href="{{url('category/delete/'.$row->id)}}" class="btn btn-sm btn-danger" id="delete">Delete</a>
+                  	<a href="{{URL::to('brand/edit/'.$row->id)}}" class="btn btn-sm btn-info">Edit</a>
+                  	<a href="{{url('brand/delete/'.$row->id)}}" class="btn btn-sm btn-danger" id="delete">Delete</a>
                   </td>
                 </tr>
                 @endforeach

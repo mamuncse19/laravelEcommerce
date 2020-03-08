@@ -32,6 +32,9 @@ Route::post('category/update/{id}','Admin\Category\CategoryController@update');
 //Brand Route
 Route::get('admin/brand','Admin\Brand\BrandController@brnad')->name('brands');
 Route::post('admin/brand/insert','Admin\Brand\BrandController@brandInsert')->name('brand.insert');
+Route::get('brand/edit/{id}','Admin\Brand\BrandController@edit');
+Route::post('brand/update/{id}','Admin\Brand\BrandController@update');
+Route::get('brand/delete/{id}','Admin\Brand\BrandController@delete');
 //Login Route
 Route::prefix('admin')->group(function() {
    Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
